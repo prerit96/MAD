@@ -1,0 +1,17 @@
+<h1>Template-driven Form Example:</h1>
+<form #f="ngForm" (ngSubmit)="onSubmitTemplateBased()">
+    <p>
+        <label>First Name:</label>
+        <input [ngClass]="{'invalid-field':u.invalid}" type="text" [(ngModel)]="user.name" required name="user" #u="ngModel">
+    </p>
+    <p>
+        <label>Password:</label>
+        <input [ngStyle]="{'border':p.invalid ? '1px solid green' : '1px solid blue'}" type="password" [(ngModel)]="user.pwd" required name="password" #p="ngModel">
+    </p>
+    <p>
+        <button type="submit" [disabled]="!f.valid">Submit</button>
+    </p>
+
+    <div *ngIf="u.invalid">invalid username</div>  
+    <div *ngIf="p.invalid">invalid password</div>    
+</form>

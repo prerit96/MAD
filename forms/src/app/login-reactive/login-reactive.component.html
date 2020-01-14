@@ -1,0 +1,33 @@
+<div>
+  <h4>Reactive Form using FormGroup and FormControl:</h4>
+  <form [formGroup]="formC" (ngSubmit)="onSubmit()">
+    <p>
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName">
+    </p>
+    <p>
+      <label>Password:</label>
+      <input type="password" formControlName="password">
+    </p>
+    <p>
+      <button type="submit" [disabled]="!formC.valid">Submit</button>
+    </p>
+  </form>
+</div>
+
+<div>
+  <h4>Reactive Form using FormBuilder:</h4>
+  <form [formGroup]="formB" (ngSubmit)="onSubmitBuilder()">
+    <p>
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName">
+    </p>
+    <p>
+      <label>Password:</label>
+      <input type="password" formControlName="password">
+    </p>
+    <p>
+      <button type="submit" [disabled]="!formB.valid">Submit</button>
+    </p>
+  </form>
+</div>
