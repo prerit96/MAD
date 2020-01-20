@@ -1,17 +1,41 @@
 <h1>Template-driven Form Example:</h1>
-<form #f="ngForm" (ngSubmit)="onSubmitTemplateBased()">
+<form #f="ngForm" (ngSubmit)="onSubmitTemplateBased(f)">
+    <input type="hidden" [(ngModel)]="user.dob" name="dob">
     <p>
         <label>First Name:</label>
-        <input [ngClass]="{'invalid-field':u.invalid}" type="text" [(ngModel)]="user.name" required name="user" #u="ngModel">
+        <input [ngClass]="u.invalid ? 'invalid-field' : 'field'" type="text" [(ngModel)]="user.name" required name="user" #u="ngModel">
     </p>
     <p>
         <label>Password:</label>
-        <input [ngStyle]="{'border':p.invalid ? '1px solid green' : '1px solid blue'}" type="password" [(ngModel)]="user.pwd" required name="password" #p="ngModel">
+        <input [ngStyle]="{'border':p.invalid ? '1px solid red' : '1px solid blue'}" type="password" [(ngModel)]="user.pwd" required name="password" #p="ngModel">
     </p>
     <p>
-        <button type="submit" [disabled]="!f.valid">Submit</button>
+        <button type="submit">Submit</button>
     </p>
-
-    <div *ngIf="u.invalid">invalid username</div>  
-    <div *ngIf="p.invalid">invalid password</div>    
+    <p *ngIf="u.invalid">invalid username</p>
+    <p *ngIf="p.invalid">invalid username</p>
+   
 </form>
+
+<button (click)="submit();">Click</button>
+
+<!-- 
+
+<form (ngSubmit)="submit(ft)" #ft="ngForm">
+    <p>
+        <label>First Name:</label>
+        <input type="text" ngModel name="user" #u="ngModel">
+    </p>
+    <p>
+        <label>Password:</label>
+        <input type="password" ngModel name="password" #p="ngModel">
+    </p>
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</form> -->
+
+<!-- 
+<ul *ngFor="let l of list" [ngSwitch]="l">
+    <li *ngSwitchCase="'l1'">{{l}}</li>
+</ul> -->

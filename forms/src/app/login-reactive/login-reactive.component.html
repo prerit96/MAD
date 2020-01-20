@@ -1,13 +1,16 @@
 <div>
+
+<input [formControl]="inputField" name="input" (click)="changeDetected()">
+
   <h4>Reactive Form using FormGroup and FormControl:</h4>
   <form [formGroup]="formC" (ngSubmit)="onSubmit()">
     <p>
       <label>First Name:</label>
-      <input type="text" formControlName="firstName">
+      <input type="text" formControlName="firstName" name="name">
     </p>
     <p>
       <label>Password:</label>
-      <input type="password" formControlName="password">
+      <input type="text" formControlName="password" name="pwd">
     </p>
     <p>
       <button type="submit" [disabled]="!formC.valid">Submit</button>
